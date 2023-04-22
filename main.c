@@ -103,22 +103,30 @@ void eliminarPersona(persona *p) {
     free(p);
 }
 
-int average(int *datos) {
-    int ingreso[3];
+float averageBetween3Elements(int dato1, int dato2, int dato3) {
+    int largoDeDatos = 3;
     int sum = 0;
-    printf("Ingrese 3 enteros: ");
-    scanf("%d %d %d", &ingreso[0], &ingreso[1], &ingreso[2]);
-    for (int i = 0; i < sizeof(ingreso) / sizeof(int); i++) {
-        sum = sum + ingreso[i];
-    }
-    float avg = (float) sum / sizeof(ingreso) * sizeof(int);
-    printf("Promedio: %f", avg);
-    return 0;
+    int i;
+
+    sum = dato1 + dato2 + dato3;
+    float avg = (float) sum / largoDeDatos;
+    return avg;
 }
+
+void crearVectorIterable(int *nuevoVector){
+    nuevoVector = (int *)malloc(1 * sizeof(int));
+}
+//
+// Nota: Se pretendia agregar uno por uno los elementos a un vector dinamico y luego sacar promedio con
+// una funcion average que acepte un int * como parametro sin conocer su largo pero podiendo identificar su final
+// identificando el null.
+//void agregarElementoAVectorIterable(int *datos)
+//void average(int *)
 
 int main(){
     // Creamos una persona
     persona *p = crearPersona("Franco", "Macen", 26, "Calle Falsa 123", "39000000");
+    float promedioEdad;
 
     // -- Imprimimos su información
     imprimirPersona(p);
@@ -134,8 +142,8 @@ int main(){
     // -- Si por ejemplo quiero obtener un dato específico
     // -- de la persona, puedo usar los getters. Por ejemplo si
     // -- queremos obtener un promedio de las edades.
-//    promedioEdad = average();
-//    printf("Promedio de edad: %d", )
+    promedioEdad = averageBetween3Elements(getEdad(p), 32, 33);
+    printf("Promedio de edad: %.2f\n", promedioEdad);
 
     // -- Eliminamos la persona
     eliminarPersona(p);
