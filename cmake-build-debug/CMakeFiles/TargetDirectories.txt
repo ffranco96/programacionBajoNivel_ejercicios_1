@@ -1,0 +1,3 @@
+C:/Users/Franco/CLionProjects/programacionBajoNivel_ejercicios_1/cmake-build-debug/CMakeFiles/programacionBajoNivel_ejercicios_1.dir
+C:/Users/Franco/CLionProjects/programacionBajoNivel_ejercicios_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Franco/CLionProjects/programacionBajoNivel_ejercicios_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
