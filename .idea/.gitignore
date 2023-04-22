@@ -6,3 +6,14 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+# Ignorar archivos objeto y ejecutables
+*.o
+*.obj
+*.exe
+*.a
+*.log
+
+# Ignorar archivos de CMake
+CMakeCache.txt
+CMakeFiles/
