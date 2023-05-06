@@ -10,9 +10,10 @@
 #include <string.h>
 
 #include "personas.h"
+#include "listas.h"
 
 int main(){
     ejercicioPersonas();
-
+    ejercicioListas();
     return 0;
 }

@@ -129,7 +129,7 @@ void ejercicioPersonas(){
 
     // -- Eliminamos la persona
     eliminarPersona(p);
-
+    printf("\n");
     // -- Si quisieramos acceder nuevamente a sus atributos, esto no sería posible ya que la memoria apuntada
     // -- por p ahora fue liberada y el sistema puede usarla para alguna otra operación.
     // -- Si imprimieramos, podríamos ver los datos previamente guardados, basura, o quizas ningun dato. Probar descomentando.
