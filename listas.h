@@ -20,10 +20,21 @@ typedef struct LinkedList {
     Node* head;
 } LinkedList;
 
+/*
+ * @brief
+ * Crea e inicializa una estructura lista enlazada de tipo LinkedList que contiene los elementos:
+ * #length: largo de la lista enlazada
+ * #head : puntero de tipo Node * que apunta al primer elemento de la lista, si existe, de lo contrario apunta a NULL.
+ * @author Franco Macen
+ * */
+
+/*
+ * @todo finish documentation
+ * */
 LinkedList* createLinkedList();
 void addElement(LinkedList* list, int data) ;
 int getListLength(LinkedList* list);
-Node* getElement(LinkedList* list, int n);
+void getElementByPosition(LinkedList* list, int n, Node **obtainedNode);
 void deleteElement(LinkedList* list, int n);
 void printList(LinkedList* list);
 

@@ -3,6 +3,7 @@
 //
 
 #include "listas.h"
+//@todo Cambiar el retorno de todas las funciones para poder manejar sus errores
 
 // -- Función para crear e inicializar la lista
 LinkedList* createLinkedList() {
@@ -39,21 +40,23 @@ int getListLength(LinkedList* list) {
 }
 
 // -- Obtener un elemento N de la lista
-//Node* getElement(LinkedList* list, int n) {
-//    //@todo POr aca hay un segmentation fault
-//    // -- Verificamos parametro
-//    if (n >= list->length) {
-//        return NULL;
-//    }
-//
-//    // -- Usando un puntero auxiliar curr (current) recorremos la lista hasta encontrar el elemento deseado
-//    Node* curr = list->head;
-//    for (int i = 0; i < n; i++) {
-//        curr = curr->next;
-//    }
-//
-//    return curr;
-//}
+void getElementByPosition(LinkedList* list, int n, Node **obtainedNode) {
+    Node* curr = NULL;
+    // -- Verificamos parametro
+    if (n >= list->length) {
+        *obtainedNode = curr;
+        return;
+    }
+
+    // -- Usando un puntero auxiliar curr (current) recorremos la lista hasta encontrar el elemento deseado
+    curr = list->head;
+    for (int i = 0; i < n; i++) {
+        curr = curr->next;
+    }
+
+    *obtainedNode = curr;
+    return;
+}
 
 // -- Funcion para eliminar un elemento N de la lista, siendo n == 0 el primer elemento de la lista
 void deleteElement(LinkedList* list, int n) {
@@ -99,14 +102,15 @@ void addSortedElement(LinkedList* list, int data) {
     newNode->data = data;
     newNode->next = NULL;
 
-    // -- Specific case: if list is empty, we just add new node as list header
+    // -- Con lista vacia : simplemente se agrega el nuevo nodo como head de la lista.
     if (list->head == NULL) {
+        printf(" Debugger: La lista estaba vacia\n");
         list->head = newNode;
         list->length++;
         return;
     }
 
-    // -- General case: we go through the list to find the right position for the new node
+    // -- Con lista conteniendo al menos 1 elemento: recorremos la lista para encontrar la posicion correcta para el nuevo nodo
     prev = NULL;
     curr = list->head;
     while (curr != NULL && curr->data < data) {
@@ -114,7 +118,8 @@ void addSortedElement(LinkedList* list, int data) {
         curr = curr->next;
     }
 
-    // -- Insert the new node in the right position
+    // -- Insertamos el nuevo nodo en la posicion correspondiente.
+    // -- Se contempla el caso en que se debe insertar un nodo delante del primer elemento.
     if (prev == NULL) {
         newNode->next = list->head;
         list->head = newNode;
@@ -122,32 +127,35 @@ void addSortedElement(LinkedList* list, int data) {
         newNode->next = curr;
         prev->next = newNode;
     }
-
     list->length++;
 }
 
 int ejercicioListas() {
     LinkedList *list = createLinkedList();
     LinkedList *sortedList = createLinkedList();
-/*
+    Node *auxNode = NULL;
     addElement(list, 23);
     addElement(list, 15);
     addElement(list, 31);
     addElement(list, 3);
-*/
+
     printList(list);
     printf("Largo de la lista: %d\n", getListLength(list));
 
-//    printf("Elemento 1: %d\n", getElement(list, 15)->data);
-/*
-    deleteElement(list, 15);
+    getElementByPosition(list, 1, &auxNode);
+    if(auxNode != NULL)
+        printf("Elemento 1: %d\n", auxNode->data);
+
+    deleteElement(list, 1);
 
     printList(list);
 
-    printf("Largo de la lista: %d\n", getListLength(list));*/
+    printf("Largo de la lista: %d\n", getListLength(list));
 
     // -- Part2 - Now we are going to add sorted elements
     addSortedElement(sortedList, 23);
+    addSortedElement(sortedList, 42);
+    addSortedElement(sortedList, 42);
     addSortedElement(sortedList, 15);
     addSortedElement(sortedList, 31);
     addSortedElement(sortedList, 3);
