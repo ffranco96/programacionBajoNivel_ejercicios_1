@@ -13,7 +13,7 @@
 #include "listas.h"
 
 int main(){
-    ejercicioPersonas();
+    // ejercicioPersonas();
     ejercicioListas();
     return 0;
 }

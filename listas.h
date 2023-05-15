@@ -4,7 +4,7 @@
 
 
 
-#ifndef PROGRAMACIONBAJONIVEL_EJERCICIOS_1_LISTAS_H \
+#ifndef PROGRAMACIONBAJONIVEL_EJERCICIOS_1_LISTAS_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +16,7 @@ typedef struct Node {
 
 // -- Estructura lista enlazada
 typedef struct LinkedList {
-    int size;
+    int length;
     Node* head;
 } LinkedList;
 
@@ -26,6 +26,11 @@ int getListLength(LinkedList* list);
 Node* getElement(LinkedList* list, int n);
 void deleteElement(LinkedList* list, int n);
 void printList(LinkedList* list);
+
+// Función para agregar un elemento a la lista de forma ordenada
+void addSortedElement(LinkedList* list, int data);
+
+// -- TP listas --
 int ejercicioListas();
 #define PROGRAMACIONBAJONIVEL_EJERCICIOS_1_LISTAS_H
 
